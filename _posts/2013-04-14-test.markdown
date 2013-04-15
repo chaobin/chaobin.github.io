@@ -4,6 +4,7 @@ title: testing
 tags: test jekyll
 description: This is just a jekyll testing
 ---
-# this is just a testing with jekyll
 
-## now it is something else to testing
+### now it is something else to testing
+
+This post is written on {{ page.date | date:'%d/%m/%Y'}}
