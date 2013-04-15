@@ -1,0 +1,19 @@
+safe:        false
+auto:        false
+baseurl:    /
+
+source:      .
+destination: ./_site
+plugins:     ./_plugins
+
+lsi:         false
+pygments:    true
+markdown:    maruku
+permalink:   date
+
+maruku:
+  use_tex:    false
+  use_divs:   false
+  png_engine: blahtex
+  png_dir:    ./images/
+  png_url:    /images/
