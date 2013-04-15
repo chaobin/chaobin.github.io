@@ -1,0 +1,15 @@
+<header>
+  <h1 class="header">Chaobin Tang (唐超斌)</h1>
+  <p class="header">Programs are thoughts with syntax</p>
+  <ul>
+    <li><a class="buttons github" href="https://github.com/chaobin">GitHub Profile</a></li>
+  </ul>
+</header>
+
+<div class="topnav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    {% assign latest = site.posts | first %}
+    <li><a href="{{ latest.url }}" title="{{ latest.title | capitalize }}">Latest Post</a></li>
+  </ul>
+</div>

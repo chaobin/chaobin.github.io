@@ -8,6 +8,7 @@
     <meta name="description" content="{{ page.description }}">
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <link rel="icon" href="/images/favicon.ico">
     <script src="/javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
@@ -17,13 +18,9 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        <h1 class="header">Chaobin Tang (唐超斌)</h1>
-        <p class="header">Programs are thoughts with syntax</p>
-        <ul>
-          <li><a class="buttons github" href="https://github.com/chaobin">GitHub Profile</a></li>
-        </ul>
-      </header>
+
+      {% include header.html %}
+
       <section>
         {{ content }}
       </section>
