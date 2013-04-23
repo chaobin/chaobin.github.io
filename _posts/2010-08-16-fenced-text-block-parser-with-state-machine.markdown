@@ -1,5 +1,6 @@
 ---
 layout: post
+type: post
 title: A parser implemented in a state machine pattern to parse "fenced" text block.
 tags: python, text, parser, pattern, state machine
 description: State machine is one of the simplest yet most useful patterns when solving some complicated problems. Such as this one, where I implemented a text parser that parses the "fenced" text block out of one piece of text. This "fenced" text block thing is often used to embed some special text block right into one larger text so that this "fenced" text block can be differently further processed. (Think about the code block in markdown.) Look at the code and see how simple it is to implement this state machine, and it is also very extensible and versatile. 

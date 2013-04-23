@@ -7,8 +7,8 @@
 </header>
 
 <div class="topnav">
-  <ul>
-    <li><a href="/">Home</a></li>
+  <ul class="nav">
+    <li class="first"><a href="/">Home</a></li>
     {% assign latest = site.posts | first %}
     <li><a href="{{ latest.url }}" title="{{ latest.title | capitalize }}">Latest Post</a></li>
   </ul>

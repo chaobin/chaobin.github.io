@@ -310,14 +310,17 @@ a.buttons:hover {
 /* Navigation */
 
 .topnav {
-  width:650px;
-  float:right;
+  width:190px;
+  float:left;
+  position: fixed;
+  top: 250px;
+  padding: 5px;
+  margin: 30px 25px 0 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 .topnav li {
   list-style: none;
-  font-size: 16px;
-  float: left;
 }
 
 /* Section - for main page content */
@@ -347,10 +350,19 @@ footer {
     margin:0;
   }
 
-  header, section, footer {
+  header, .topnav, section, footer {
     float:none;
     position:static;
     width:auto;
+  }
+
+  .topnav {
+    margin-left: 20px;
+  }
+
+  .nav li {
+    float: left;
+    
   }
 
   footer {
@@ -400,6 +412,42 @@ footer {
 
   header ul, header p.view {
     position:static;
+  }
+
+  .nav li.first {
+    padding-left: 0;
+  }
+
+  .nav a {
+    float: left;
+    line-height: 1em;
+    padding: 7px 11px;
+    background-color: #AF0011;
+    background: -moz-linear-gradient(top, #AF0011 0%, #820011 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
+    background: -webkit-linear-gradient(top, #AF0011 0%,#820011 100%);
+    background: -o-linear-gradient(top, #AF0011 0%,#820011 100%);
+    background: -ms-linear-gradient(top, #AF0011 0%,#820011 100%);
+    background: linear-gradient(top, #AF0011 0%,#820011 100%);
+    border-radius:4px;
+    -webkit-box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
+    -webkit-font-smoothing: antialiased;
+    box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
+    text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+    color: white;
+    font-weight: normal;
+  }
+
+  .nav a:hover {
+    background-color: #C3001D;
+    background: -moz-linear-gradient(top, #C3001D 0%, #950119 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
+    background: -webkit-linear-gradient(top, #C3001D 0%,#950119 100%);
+    background: -o-linear-gradient(top, #C3001D 0%,#950119 100%);
+    background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
+    background: linear-gradient(top, #C3001D 0%,#950119 100%);
+
+    text-decoration: none;
   }
 }
 

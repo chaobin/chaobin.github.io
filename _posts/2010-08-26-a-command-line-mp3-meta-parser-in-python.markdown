@@ -1,5 +1,6 @@
 ---
 layout: post
+type: post
 title: A command line MP3 meta info parser written in Python
 tags: python, mp3, meta info, parser, linux, command line
 description: Using hsautiotag, which is a meta info parser written in pure Python supporting mp3/mp4/wmv/flac/ogg, here is a command line mp3 parser I wrote. You can actually try this out by executing it.

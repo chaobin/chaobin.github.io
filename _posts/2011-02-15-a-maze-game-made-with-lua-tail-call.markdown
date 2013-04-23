@@ -1,5 +1,6 @@
 ---
 layout: post
+type: post
 title: A maze game made with Lua's tail-call
 tags: lua tail-recursive programing
 description: A maze game, designed using a state machine. In Lua, tail-calls as shown below are GOTOs, which doesn't create a stack. Infinite tail-call are permitted as not to raise stackoverflow. In Python, however, this will be a problem.

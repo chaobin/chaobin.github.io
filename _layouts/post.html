@@ -22,6 +22,10 @@
       {% include header.html %}
 
       <section>
+        {% if page.type == 'post' %}
+        <h3>{{ page.title | capitalized }}</h3>
+        {% endif %}
+
         {{ content }}
       </section>
       <footer>
