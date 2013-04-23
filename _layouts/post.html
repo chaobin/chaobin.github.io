@@ -18,14 +18,11 @@
 
   <body>
     <div class="wrapper">
-
       {% include header.html %}
-
       <section>
         {% if page.type == 'post' %}
-        <h3>{{ page.title | capitalized }}</h3>
+        <h2>{{ page.title | capitalized }}</h2>
         {% endif %}
-
         {{ content }}
       </section>
       <footer>
