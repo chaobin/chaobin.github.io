@@ -8,7 +8,7 @@ plugins:     ./_plugins
 
 lsi:         false
 pygments:    true
-permalink:   date
+permalink:   pretty
 
 markdown: redcarpet
 redcarpet:
