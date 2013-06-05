@@ -8,7 +8,7 @@ description: Printing a pattern with spiral numbers starting from the center. If
 
 Printing a pattern with spiral numbers starting from the center. If you have seen one snail, or a picture of it, you know what this is all about. Also, the algorithm used in this implementation most importantly sees the *correlation between the square root (namely the pattern size) and the coordinates of the point*. This has an advantage where the implementation might look straightforward, while the disadvantage is that it calculates based on the position, not the numbers. A better solution would be to start with the number, say 1, 2, 3, 4, ... Anyway, see how it plays out in this implementation.
 
-Here lies the [code](https://github.com/chaobin/snail "snail").
+Here lies the [code](https://github.com/chaobin/ulamespiral "ulamespiral").
 
 Usage -
 
