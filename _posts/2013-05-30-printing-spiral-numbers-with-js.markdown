@@ -1,7 +1,7 @@
 ---
 layout: post
 type: post
-title: Printing spiral numbers with in Javascript
+title: Printing spiral numbers with Javascript
 tags: algorithm, javascript, number, game
 description: Printing a pattern with spiral numbers starting from the center. If you have seen one snail, or a picture of it, you know what this is all about. Also, the algorithm used in this implementation most importantly sees the correlation between the square root (namely the pattern size) and the coordinates of the point. This has an advantage where the implementation might look straightforward, while the disadvantage is that it calculates based on the position, not the numbers. A better solution would be to start with the number, say 1, 2, 3, 4, ... Anyway, see how it plays out in this implementation.
 ---
@@ -32,7 +32,7 @@ Here is an animated demonstrate -
   </style>
   <script type="text/javascript" src="/javascripts/snail.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var sn = new snail.Snail(9);
+    var spiral = new snail.Snail(9);
     sn.prepare();
     sn.draw();
     snail.ui.draw(sn._zeros);
