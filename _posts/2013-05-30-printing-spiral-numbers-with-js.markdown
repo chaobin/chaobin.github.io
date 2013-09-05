@@ -32,7 +32,7 @@ Here is an animated demonstrate -
   </style>
   <script type="text/javascript" src="/javascripts/snail.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var spiral = new snail.Snail(9);
+    var sn = new snail.Snail(9);
     sn.prepare();
     sn.draw();
     snail.ui.draw(sn._zeros);
