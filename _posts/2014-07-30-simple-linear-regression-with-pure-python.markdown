@@ -53,4 +53,4 @@ def fit3(X, Y):
 
 ```
 
-[Here](http://nbviewer.ipython.org/url/128.199.200.181:7777/download/Linear%20Regression%20-%20simple%20regression.ipynb) is the online notebook that shows the plot.
+[Here](http://nbviewer.ipython.org/gist/chaobin/5fe5044bb6589ba9b5f9) is the online notebook that shows the plot.
