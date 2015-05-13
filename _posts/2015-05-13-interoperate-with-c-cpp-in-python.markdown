@@ -6,8 +6,6 @@ tags: Python, C/C++, wrapping
 description: It's in Python's early days that its ability to inter-operate with lower level languages made it promising. Later, many solutions emerged to improve this ability in some way.
 ---
 
-## Inter-operations between Python and C/C++
-
 This article outlines several existing options, providing a 
 high level comparison.
 
@@ -155,10 +153,10 @@ Starting from **0.9**, *cffi.verify()* supports C++ code. Because
 the current latest version is **0.9.2**, C++ support hasn't gone
 through a time long enough to receive many real world usage though.
 
-Underlying, CFFI uses relies on the same libffi that Python's ctypes does.
-But it aproaches different to be more reliable and performant.
+Underlying, CFFI relies on the same libffi that Python's ctypes does.
+But it aproaches differently to be more reliable and performant.
 [Here](http://eli.thegreenplace.net/2013/03/09/python-ffi-with-ctypes-and-cffi)
-is an article that explains nice how CFFI works.
+is an article that explains nicely how CFFI works.
 
 [Here](https://bitbucket.org/cffi/cffi/src/default/demo) has number of
 demos that should quickly give you a better look.
