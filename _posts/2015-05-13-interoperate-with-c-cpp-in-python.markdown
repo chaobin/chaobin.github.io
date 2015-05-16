@@ -44,7 +44,7 @@ bindings.
 - Well documented
 - No gotchas
 
-#### Conts
+#### Cons
 
 - Lots of C code
 - Dealing directly with Python C APIs requires one to
