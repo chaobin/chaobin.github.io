@@ -39,7 +39,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color:#232323;
-  margin:36px 0 10px;
+  margin:10px 0 10px;
 }
 
 p, ul, ol, table, dl {
@@ -76,8 +76,9 @@ h4, h5, h6 {
 }
 
 a {
-  color:#C30000;
+  color:#1D3562;
   font-weight:200;
+  font-style: italic;
   text-decoration:none;
 }
 
@@ -161,9 +162,7 @@ code, pre {
 
 pre {
   padding: 4px 12px;
-  background: #2E3226;
   border-radius:4px;
-  border:1px solid #D7D8C8;
   overflow: auto;
   overflow-y: hidden;
   margin-bottom: 32px;
@@ -207,18 +206,10 @@ td {
 /* Header */
 
 header {
-  background-color: #2E3226;
-  color: #FDFDFB;
   width:190px;
   float:left;
   position:fixed;
-  border: 1px solid #000;
-  -webkit-border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+ 
   padding: 34px 25px 22px 20px;
   margin: 30px 25px 0 0;
   -webkit-font-smoothing: antialiased;
@@ -240,7 +231,6 @@ h1.header {
 
 
 h1.header, a.header, a.name, header a{
-  color: #fff;
 }
 
 a.header {
@@ -333,7 +323,6 @@ section {
   margin-top: 50px;
 }
 
-
 /* Footer */
 
 footer {
@@ -419,38 +408,6 @@ footer {
     padding-left: 0;
   }
 
-  .nav a {
-    float: left;
-    line-height: 1em;
-    padding: 7px 11px;
-    background-color: #AF0011;
-    background: -moz-linear-gradient(top, #AF0011 0%, #820011 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-    background: -webkit-linear-gradient(top, #AF0011 0%,#820011 100%);
-    background: -o-linear-gradient(top, #AF0011 0%,#820011 100%);
-    background: -ms-linear-gradient(top, #AF0011 0%,#820011 100%);
-    background: linear-gradient(top, #AF0011 0%,#820011 100%);
-    border-radius:4px;
-    -webkit-box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
-    -webkit-font-smoothing: antialiased;
-    box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
-    text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
-    color: white;
-    font-weight: normal;
-  }
-
-  .nav a:hover {
-    background-color: #C3001D;
-    background: -moz-linear-gradient(top, #C3001D 0%, #950119 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-    background: -webkit-linear-gradient(top, #C3001D 0%,#950119 100%);
-    background: -o-linear-gradient(top, #C3001D 0%,#950119 100%);
-    background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
-    background: linear-gradient(top, #C3001D 0%,#950119 100%);
-
-    text-decoration: none;
-  }
-}
 
 @media print, screen and (max-width: 480px) {
 

@@ -7,7 +7,7 @@ destination: ./_site
 plugins:     ./_plugins
 
 lsi:         false
-highlighter:    true
+pygment: 	 true
 permalink:   pretty
 
 markdown: redcarpet
