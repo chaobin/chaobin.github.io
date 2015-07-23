@@ -50,21 +50,21 @@ import pkg.module # a module from a package
 
 1. Try to find *sys.modules["module"]*, return the value if found and the process stops.
 1. Look at *sys.meta_path*, which is a list of objects called finders that implement [import protocol](https://www.python.org/dev/peps/pep-0302/#id27), call *find_module("module")* on every object. Right now, this list is empty by default, therefore, this steps does nothing.
-1. Call a builtin importer that knows how to import builtin module. (Modules that are loaded as part of the Python itself, *sys* for example.)
-1. Call a frozen importer that knows how to import [frozen module](https://docs.python.org/2/library/imp.html#imp.init_frozen). (Frozen modules are modules written in Python whose compiled byte-code object is incorporated into a custom-built Python interpreter by Python’s freeze utility.)
+1. Call a builtin importer that knows how to import builtin module (Modules that are loaded as part of the Python itself, *sys* for example.)
+1. Call a frozen importer that knows how to import [frozen module](https://docs.python.org/2/library/imp.html#imp.init_frozen) (Frozen modules are modules written in Python whose compiled byte-code object is incorporated into a custom-built Python interpreter by Python’s freeze utility).
 1. Look at *sys.path_hooks*, which is another list of finders that implement the import protocol, call *find_module("module")* on every object. Right now, this list contains the *ZipImporter* by default that knows how to import module in a zip file.
-1. Search places in *sys.path* (you can see there are many things happening before it)
+1. Search places in *sys.path* (you can see there are many things happening before it).
 1. Load the module using the loaders (In 2.7, the loader is directly returned) returned by the finders above, and place the module into *sys.modules* for cache.
 1. Set a set of module related information on the module,. Things like *\_\_doc\_\_*, *\_\_file\_\_* are set in here.
 1. Bind the module object to the name "module", and put it into the caller's current scope.
-1. If it is a package, as in the second line *import pkg.module*, the *pkg* is first imported using the steps above, and *"\_\_path\_\_"* is set on it, and later passed into *find_module("pkg.module", path=pkg.\_\_path\_\_)* to import *pkg.module*, this is called a *submodule* import. Submodules are imported this way recursively. (As a result of importing pkg.module, the sys.modules will contain both *pkg* and *pkg.module*.)
+1. If it is a package, as in the second line *import pkg.module*, the *pkg* is first imported using the steps above, and *"\_\_path\_\_"* is set on it, and later passed into *find_module("pkg.module", path=pkg.\_\_path\_\_)* to import *pkg.module*, this is called a *submodule* import. Submodules are imported this way recursively (As a result of importing pkg.module, the sys.modules will contain both *pkg* and *pkg.module*).
 
 #### In Python **3.4**, the import system does these in this precise order:
 
 1. Try to find *sys.modules["module"]*, return the value if found and the process stops.
 1. Look at sys.meta_path, right now in **3.4**, this by default contains:
 
-    1. A *BuiltinImporter* that knows how to import builtin module. (Modules that are loaded as part of the Python itself, *sys* for example.)
+    1. A *BuiltinImporter* that knows how to import builtin module (Modules that are loaded as part of the Python itself, *sys* for example).
     1. A *FrozenImporter* that knows how to import [frozen module](https://docs.python.org/2/library/imp.html#imp.init_frozen).
     1. A *PathFinder* knows how to find module in import path (*sys.path*, for example)
 

@@ -183,7 +183,7 @@ tested than with C.
 [Cython](http://docs.cython.org/) is a standalone language.
 It is in fact a super set of Python, extending it with:
 
-- C data types (with auto conversion from/to Python values )
+- C data types (with auto conversion from/to Python values)
 - ability to call C/C++ libraries freely
 - a compiler that compiles the Cython code into C
 
