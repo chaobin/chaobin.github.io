@@ -81,8 +81,8 @@ As you can see, the most important difference between **2.7** and **3.4** is the
 
 Python exposes its import system to the developer, with even simpler interface in latest 3.x versions. Here are modules you can use:
 
-- *[imp](https://docs.python.org/2/library/imp.html)*, the builtin module that has the lowest level of semantics. Things like aquiring the import lock, releasing it, creating a new module object, load code from source file, bytes-compiled file, load dynamic library (SOs on Unix, DLLs on Windows), etc. It's used to closely access the internals of import system.
-- *[importlib](http://docs.python.jp/3/library/importlib.html)*, the standard module provides higher level semantics working the import system. An example would be to call *importlib.import_module()* instead of calling *\_\_import\_\_* traditionally. In other words, you should always first consider *importlib* if you for some reason don't want to use the *import* statement directly.
+- [*imp*](https://docs.python.org/2/library/imp.html), the builtin module that has the lowest level of semantics (or import system machinaries, called by Python). Things like aquiring the import lock, releasing it, creating a new module object, load code from source file, bytes-compiled file, load dynamic library (SOs on Unix, DLLs on Windows), etc. It's used to closely access the internals of import system.
+- [*importlib*](http://docs.python.jp/3/library/importlib.html), the standard module provides higher level semantics working with the import system. An example would be to call *importlib.import_module()* instead of calling *\_\_import\_\_*  traditionally. In other words, you should always first consider *importlib* if you, for some reason, don't want to directly use the *import* statement.
 
 
 ### An example using this understanding
