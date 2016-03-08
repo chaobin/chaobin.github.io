@@ -109,6 +109,10 @@ The tangent line gives us much information about that position:
 
 *(In fact, the **second derivative** will reveal even more information to us, such as the existance of a local minimum in a certain range of the function. This property is better studied as **convexity**.)*
 
+### Gradient Descent VS. Newton's Method
+
+Geometrically, the two methods both use the observation that the derivative (the slop pf the tangent line at given position) points out the direction of the change. Newton's Method uses one more observation by setting the *y == 0* for the tangent line equation, you will get a new *x* value that gets you closer to the root. For this reason, it is visually possible to see that Newton's Method might be able to converge more quickly than Gradient Descent. But there exists several reasons GD is favored over Newton's Method, e.g., Newton's Method is less robust and it sometimes doesn't converge.
+
 ### The cost definition
 
 A cost function is one that describes the quality of the prediction of the model. An **MSE**, or **Mean Squared Error** measures the average **differences** between the predictions and the actual output given one training data set:
