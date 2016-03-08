@@ -1,7 +1,7 @@
 ---
 layout: post_mathjax
 type: post
-title: An mathematically intuitive understanding on Gradient Descent
+title: A mathematically intuitive understanding on Gradient Descent
 tags: machine learning, gradient descent, linear regression
 description: Gradient Descent is a mathematically simple idea, yet it is very effective in searching for an approximation to a problem. Building on top of it, there are many variations of it that play an important role in modern machine learning. A lookback on the derivative in analytical math helps to build a robust understanding of it. In the article I also included a real example using the learned linear model to predict the SAT score.
 ---
