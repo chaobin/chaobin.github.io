@@ -223,10 +223,9 @@ does-just-that.
 ### SWIG
 
 [Short](http://www.swig.org/) for Simplified Wrapper and Interface Generator.
-I have heard of SWIG a long time ago, but never used it. At the moment, not
-much research has been done on it. But it does look a much more complicated
-CFFI in a sense (it shines in that it can generate from an interface file 
-the wrapper for quite a few languages). I shall take a look at this some other
-day.
+Swig has been there for quite some time and certainly helped get Python
+popular in its earlier days. I came across many libraries using swig for
+wrapper generation but I never used it myself in any project. 
+
 
 
