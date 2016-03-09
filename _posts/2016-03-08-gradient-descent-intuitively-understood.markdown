@@ -14,18 +14,24 @@ The learning process is in other words an optimization process. To begin on what
 
 Suppose this is a function that represents our problem:
 
-<div><span>$$f(x) = ax^2 + bx + c $$</span></span></div>
+{% raw %}
+<div class="equation" data="f(x) = ax^2 + bx + c"></div>
+{% endraw %}
 
 This is the *derivative* of that function:
 
-<div><span>$$f'(x) = 2ax + b$$</span></div>
+{% raw %}
+<div class="equation" data="f'(x) = 2ax + b"></div>
+{% endraw %}
 
 It makes things much easier to realize that **derivative** is a way of measuring the **rate of change of the function** (with respect to the variable). This realization helps simplify the symbol form of this math into the understanding that will pave your way out to grasp several complicated algorithms in the future(e.g., backward propagation).
 
 
 The function we had above has only one variable. In problems that many machine learning algorithms are solving, one can have a few to millions of variables:
 
-<div><span>$$f(x_1, x_2, x_3, ... x_n) = ax_1 + bx_2 + cx_3 + ... mx_n$$</span></div>
+{% raw %}
+<div class="equation" data="f(x_1, x_2, x_3, ... x_n) = ax_1 + bx_2 + cx_3 + ... mx_n"></div>
+{% endraw %}
 
 It will come the time that you need to measure the rate of the change of the function **with respect to one single variable**, this measure using the **derivative** is called the **partial derivative**. It is just the normal derivative taken with respect to one variable while considering all the rest of the variables **constants**.
 
@@ -95,12 +101,15 @@ The plot above shows the tangent line at the four positions on the defined funct
 
 Given one function:
 
-
-<div><span>$$ f(x) = x^2 $$</span></div>
+{% raw %}
+<div class="equation" data=" f(x) = x^2 "></div>
+{% endraw %}
 
 The tangent line function at position *(x, y)* is given by:
 
-<div><span>$$ y_0 = y - f'(x) * (x - x_0) $$</span></div>
+{% raw %}
+<div class="equation" data=" y_0 = y - f'(x) * (x - x_0) "></div>
+{% endraw %}
 
 The tangent line gives us much information about that position:
 
@@ -117,7 +126,9 @@ Geometrically, the two methods both use the observation that the derivative (the
 
 A cost function is one that describes the quality of the prediction of the model. An **MSE**, or **Mean Squared Error** measures the average **differences** between the predictions and the actual output given one training data set:
 
-<div><span>$$ J(\Theta) = \frac{1}{2m}\sum_{i=1}^m(h_{(\Theta)}(x^{(i)}) - y^{(i)})^2 $$</span></div>
+{% raw %}
+<div class="equation" data="J(\Theta) = \frac{1}{2m}\sum_{i=1}^m(h_{(\Theta)}(x^{(i)}) - y^{(i)})^2"></div>
+{% endraw %}
 
 ```python
 # Our model definition
@@ -142,7 +153,9 @@ class LinearModel(object):
 
 Utilizing the information revealed by that derivative (slope of the tangent line) we can decide **how to move the x** so that the function converges to a local minimum:
 
-<div><span>$$ x^+ = x - \lambda\frac{d}{dx}f(x)$$</span></div>
+{% raw %}
+<div class="equation" data=" x^+ = x - \lambda\frac{d}{dx}f(x)"></div>
+{% endraw %}
 
 In the equation above, the **λ** is an added control on the size of the step, also called the **learning rate**, and here below is a direct translation of that observation into our gradient descent algorithm:
 
@@ -179,7 +192,9 @@ def gd(model, X, Y, cost_derivative, rate=0.1, epoch=100):
 
 The partial derivative of the cost **J(Θ)** defined above with respect to **Θ** is [deducted](https://www.mathsisfun.com/calculus/derivatives-rules.html) to:
 
-<div><span>$$ \frac{d}{d\Theta^{(i)}}J(\Theta) = \frac{1}{m}\sum_{i=1}^m(h_{(\Theta)}(x^{(i)}) - y^{(i)})x^{(i)} $$</span></div>
+{% raw %}
+<div class="equation" data="\frac{d}{d\Theta^{(i)}}J(\Theta) = \frac{1}{m}\sum_{i=1}^m(h_{(\Theta)}(x^{(i)}) - y^{(i)})x^{(i)}"></div>
+{% endraw %}
 
 ### Vectorization -  Computation Efficiency
 
