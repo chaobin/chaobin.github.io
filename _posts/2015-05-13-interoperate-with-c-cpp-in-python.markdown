@@ -63,7 +63,7 @@ in your C++ code to define the APIs that you want to export as Python APIs.
 
 An example:
 
-```C++
+```
 
 class_<World>("World")
     .def("greet", &World::greet)
