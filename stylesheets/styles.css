@@ -331,6 +331,19 @@ footer {
   padding-left: 50px;
 }
 
+/* katex */
+.equation {
+  padding-bottom:  1rem;
+  padding-top:     1rem;
+  text-align:      center;
+}
+
+.katex {
+  font-style:      italic;
+  font-weight:     lighter;
+  font-size:       1.6em;
+}
+
 @media print, screen and (max-width: 960px) {
 
   div.wrapper {
@@ -419,6 +432,19 @@ footer {
 
   footer a{
     display:block;
+  }
+
+    /* katex */
+  .equation {
+    padding-bottom:  1rem;
+    padding-top:     1rem;
+    text-align:      left;
+  }
+
+  .katex {
+    font-style:      italic;
+    font-weight:     lighter;
+    font-size:       1.2em;
   }
 
 }
