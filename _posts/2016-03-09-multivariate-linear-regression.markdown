@@ -65,7 +65,7 @@ _X, _Y = X[:train_size], Y[:train_size]
 
 # the untrained, initialized model
 predictions = model.predict(X)
-cost = model.cost(X, Y)
+cost = model.costs(X, Y)
 title = "cost: %f" % cost
 with plots.zoom_plot(10, 6):
     plots.plot_predictions_3d(X, Y, predictions, features, title=title)
@@ -86,7 +86,7 @@ descent = gradient.Descent(model, _X, _Y, 0.001)
 
 descent.run(10)
 predictions = model.predict(X)
-cost = model.cost(X, Y)
+cost = model.costs(X, Y)
 title = "cost: %f" % cost
 with plots.zoom_plot(10, 6):
     plots.plot_predictions_3d(X, Y, predictions, features, title=title)
@@ -101,7 +101,7 @@ with plots.zoom_plot(10, 6):
 ```python
 descent.run(50)
 predictions = model.predict(X)
-cost = model.cost(X, Y)
+cost = model.costs(X, Y)
 title = "cost: %f" % cost
 with plots.zoom_plot(10, 6):
     plots.plot_predictions_3d(X, Y, predictions, features, title=title)
@@ -136,7 +136,7 @@ descent = gradient.Descent(model, _X, _Y, 0.001)
 ```python
 # untrained model
 predictions = model.predict(X)
-cost = model.cost(X, Y)
+cost = model.costs(X, Y)
 title = "cost: %f" % cost
 with plots.zoom_plot(10, 6):
     plots.plot_predictions_3d(X, Y, predictions, features, title=title)
@@ -151,7 +151,7 @@ with plots.zoom_plot(10, 6):
 ```python
 descent.run(10)
 predictions = model.predict(X)
-cost = model.cost(X, Y)
+cost = model.costs(X, Y)
 title = "cost: %f" % cost
 with plots.zoom_plot(10, 6):
     plots.plot_predictions_3d(X, Y, predictions, features, title=title)
@@ -166,7 +166,7 @@ with plots.zoom_plot(10, 6):
 ```python
 descent.run(50)
 predictions = model.predict(X)
-cost = model.cost(X, Y)
+cost = model.costs(X, Y)
 title = "cost: %f" % cost
 with plots.zoom_plot(10, 6):
     plots.plot_predictions_3d(X, Y, predictions, features, title=title)

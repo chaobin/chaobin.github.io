@@ -335,7 +335,7 @@ footer {
 .equation {
   padding-bottom:  1rem;
   padding-top:     1rem;
-  text-align:      center;
+  text-align:      left;
 }
 
 .katex {
