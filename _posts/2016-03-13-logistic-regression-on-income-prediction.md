@@ -89,7 +89,7 @@ Similar to the [Mean Squared Error](http://chaobin.github.io/2016/03/08/gradient
 - should give a relatively larger value to describe a bad prediction
 - a smaller value for a good prediction
 
-We are using a measure from originated information theory called the [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy):
+We are using a measure originated from information theory called the [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy):
 
 {% raw %}
 <div class="equation" data="J(\Theta) = - log(h_\Theta(x)), y = 1"></div>
