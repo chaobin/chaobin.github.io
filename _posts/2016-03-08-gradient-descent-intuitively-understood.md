@@ -3,16 +3,14 @@ layout: post_mathjax
 type: post
 title: "Gradient Descent Intuitively Understood"
 tags:
+    - machine learning
     - gradient descent
-    - optimization
-    - partial derivative
-description: Gradient Descent is one of many wildly used optimization algorithms. It's built on measuring the change of a function with respect to the parameter.There are other variants that extend the vanilla version of Gradient Descent and performs better than it. But a good understanding of it is important to begin with.
---- 
+description: Gradient Descent is one of many wildly used optimization algorithms. It’s built on measuring the change of a function with respect to the parameter.There are other variants that extend the vanilla version of Gradient Descent and performs better than it. But a good understanding of it is important to begin with.
+---
 
-Gradient Descent is one of many wildly used optimization algorithms. It's built on measuring the change of a function with respect to the parameter.There are other variants that extend the vanilla version of Gradient Descent and performs better than it. But a good understanding of it is important to begin with.
+Gradient Descent is one of many wildly used optimization algorithms. It’s built on measuring the change of a function with respect to the parameter.There are other variants that extend the vanilla version of Gradient Descent and performs better than it. But a good understanding of it is important to begin with.
 
-
-### Measure The Rate of Change ###
+### Measure The Rate of Change ##
 
 The learning process is in other words an optimization process. To begin on what
 gradient descent is and how it works, it is extremely useful to hang onto this
@@ -256,7 +254,19 @@ level.
 The numpy I used in this writeup is the fundation of the popular scientific
 computation in Python eco-system. This documentation on [broadcast](http://docs.
 scipy.org/doc/numpy-1.10.1/user/basics.broadcasting.html) explains its
-implementation on vectorized computation. 
+implementation on vectorized computation.
+
+Briefly, numpy builds on top of LAPACK that stands for Linear Algebra Package,
+which in turn builds on top of BLAS that stands for Basic Linear Algebra
+Subprograms. The word **basic** in BLAS lies in the sense that it does the
+lowest level of operation. In fact, BLAS has
+**[three](http://www.netlib.org/blas/blasqr.pdf)** levels of operations: L1 for
+scalar, vector, vector-to-vector operation, L2 for matrix-to-vector operation,
+and L3 for matrix-to-matrix operation. The LAPACK designs to exploit the L3
+subprograms of BLAS. Using the specifications in BLAS, there are other
+implementations of BLAS such as [OpenBLAS](http://www.openblas.net/) and [Intel®
+MKL](https://software.intel.com/en-us/intel-mkl) that are meant to be more
+efficient. 
 
 **In [5]:**
 
@@ -540,8 +550,4 @@ with zoom_plot(5, 7):
  
 ![png](/images/2016-03-08-gradient-descent-intuitively-understood/2016-03-08-gradient-descent-intuitively-understood_26_0.png) 
 
- 
-### References:
 
-1. [Matplotlib Color](http://matplotlib.org/api/colors_api.html)
-1. [Latex Cheatsheet](https://wch.github.io/latexsheet/latexsheet.pdf) 
