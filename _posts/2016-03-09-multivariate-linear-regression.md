@@ -6,7 +6,7 @@ tags:
     - machine learning
     - linear regression
     - cross validation
-description: In trying to understand gradient descent, I have built a linear regression model with one input, now I am taking that same model and generalize it to use multiple inputs. So an immediate question to construct this model is what inputs or features I am going to use. It turns out this question is a general question in machine learning. To decide the inputs for a model not only involves the domain knowledge, such as knowledge on the the credit in building a credit risk model, also involves many techniques learning useful information from the training data.
+description: In trying to understand radient descent, I have built a linear regression model with one input, now I am taking that same model and generalize it to use multiple inputs. So an immediate question to construct this model is what inputs or features I am going to use. It turns out this question is a general question in machine learning. To decide the inputs for a model not only involves the domain knowledge, such as knowledge on the the credit in building a credit risk model, also involves many techniques learning useful information from the training data.
 --- 
 
 In trying to understand [gradient descent](/2016/03/08/gradient-descent-
@@ -44,7 +44,7 @@ however, omitting further discussing on the topic, use a basic approach by
 measuring the correlation between the feature and outcome. The correlation
 measure used is the Pearson Correlation. 
 
-**In [5]:**
+**In [2]:**
 
 {% highlight python %}
 # Here I used pandas just to simplify the process
@@ -67,15 +67,15 @@ data = df_gpa.values
  
 **[Pearson Correlation](https://en.wikipedia.org/wiki/Pearson_product-
 moment_correlation_coefficient)** is based on measuring the variance of data(I
-found PCC a helper in memorizing several statistical equation as it combines
-several measurement into one single equation). Anyway, the Pearson Correlation
-gives you a linear correlation measure between two variable. In our case, this
+found PCC a helper in memorizing several statistical equations as it combines
+several measurements into one single equation). Anyway, the Pearson Correlation
+gives you a linear correlation measure between two variables. In our case, this
 can be used to tell us the level of correlation (not causation, although a
 correlation sometimes leads to the discovery of causation, but usually it needs
 some domain knowledge or common sense to justify) between each input and the
 outcome. 
 
-**In [6]:**
+**In [3]:**
 
 {% highlight python %}
 # pandas has a corr() that by default uses the pearson method
@@ -88,7 +88,7 @@ features = df_gpa.corr()['univ_GPA'].sort_values(ascending=False)[1:3].index.tol
 columns = [column_names.index(f) for f in features]
 {% endhighlight %}
 
-**In [9]:**
+**In [1]:**
 
 {% highlight python %}
 %matplotlib inline
@@ -104,11 +104,10 @@ from isaac.plots import basic as plots
 To think of machine learning as a way of *producing a program by inputting data*
 (versus *producing a program by inputting source code*), You want the machine
 learned program to be able to perform well not only on training data that helped
-train the model. For example, using a **small portion** of the user data on
-their preferences in music, you want the model to be able to predict the
-preferences of **all** your users and recommend music for them. In other words,
-the model should generalize well enough that it makes good predictions on data
-beyong the training data.
+train the model, but also make good predictions about the unseen data. For
+example, using a **small portion** of the user data on their preferences in
+music, you want the model to be able to predict the preferences of **all** your
+users and recommend music for them.
 
 A model can be -
 
@@ -124,15 +123,42 @@ In either case, the model will not be able to generalize. Apart from other
 techniques such as regularization, [cross validation](http://scikit-
 learn.org/stable/modules/cross_validation.html) is one of them that should be
 applied in the earliest stage of the process.
+
+Optimization algorithms such as gradient descent takes several parameters:
+
+- the **learning rate**
+- the **lambda** in the regularization term
+- the **batch size** in stochastic gradient descent
+
+The value of these parameters have direct impact on the model's performance
+during training. And these parameters are called **hyperparameters**, in a sense
+that these parameters are different from those in the model yet also impact the
+performance of it.
+
+Training a model is to fit the model's parameters to the training dataset. One
+thing we want to make sure during training is to obtain a good balance between
+being overfitted and underfitted. We need a measure to tell us. A
+straightforward method would be to have it to make some predictions on **unseen
+data**. If the quality of prediction satifies us we can stop the training.
+Otherwise we shall continue tuning the model and perhaps adjust the
+hyperparameters such as learning rate so that the model's cost continues to
+decrease. Here comes the point of cross validation: **the unseen data should be
+the data set that is not used in any process of training, neither in fitting the
+model's parameters nor used to tune the hyperparameters.** So if we are given
+one data set *X*, using cross validation, we shall make **three** partitions out
+of *X*, one as training set, one test set to measure the prediction, and one as
+the unseen data to tell us how well the model is really doing on data it has
+never seen. One can think of the test set as the training set used to train the
+hyperparameter.
  
 
-**In [28]:**
+**In [4]:**
 
 {% highlight python %}
 from sklearn.cross_validation import train_test_split
 {% endhighlight %}
 
-**In [37]:**
+**In [5]:**
 
 {% highlight python %}
 X, Y = preprocess.get_XY_from_frame(data, columns)
@@ -140,13 +166,13 @@ X_train, X_test, Y_train, Y_test = train_test_split(
     X, Y, test_size=0.33, random_state=42)
 {% endhighlight %}
 
-**In [38]:**
+**In [6]:**
 
 {% highlight python %}
 model = regressions.LinearRegression.from_dimension(len(features) + 1)
 {% endhighlight %}
 
-**In [40]:**
+**In [7]:**
 
 {% highlight python %}
 # the untrained, initialized model
@@ -166,7 +192,7 @@ with plots.zoom_plot(10, 6):
 ![png](/images/2016-03-09-multivariate-linear-regression/2016-03-09-multivariate-linear-regression_9_1.png) 
 
 
-**In [41]:**
+**In [8]:**
 
 {% highlight python %}
 from isaac.optimizers import gradient
@@ -180,13 +206,13 @@ reload(gradient)
 
 
 
-**In [43]:**
+**In [9]:**
 
 {% highlight python %}
 descent = gradient.Descent(model, X_train, Y_train, 0.001)
 {% endhighlight %}
 
-**In [44]:**
+**In [10]:**
 
 {% highlight python %}
 descent.run(10)
@@ -206,7 +232,7 @@ with plots.zoom_plot(10, 6):
 ![png](/images/2016-03-09-multivariate-linear-regression/2016-03-09-multivariate-linear-regression_12_1.png) 
 
 
-**In [45]:**
+**In [11]:**
 
 {% highlight python %}
 descent.run(50)
@@ -226,40 +252,40 @@ with plots.zoom_plot(10, 6):
 ![png](/images/2016-03-09-multivariate-linear-regression/2016-03-09-multivariate-linear-regression_13_1.png) 
 
 
-**In [46]:**
+**In [12]:**
 
 {% highlight python %}
 # Let's use the bottom ranked features and compare
 # the model with one above
 {% endhighlight %}
 
-**In [47]:**
+**In [13]:**
 
 {% highlight python %}
 features = df_gpa.corr()['univ_GPA'].sort_values(ascending=True)[1:3].index.tolist()
 columns = [column_names.index(f) for f in features]
 {% endhighlight %}
 
-**In [48]:**
+**In [14]:**
 
 {% highlight python %}
 model = regressions.LinearRegression.from_dimension(len(features) + 1)
 X, Y = preprocess.get_XY_from_frame(data, columns)
 {% endhighlight %}
 
-**In [49]:**
+**In [15]:**
 
 {% highlight python %}
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y)
 {% endhighlight %}
 
-**In [50]:**
+**In [16]:**
 
 {% highlight python %}
 descent = gradient.Descent(model, X_train, Y_train, 0.001)
 {% endhighlight %}
 
-**In [51]:**
+**In [17]:**
 
 {% highlight python %}
 # untrained model
@@ -279,7 +305,7 @@ with plots.zoom_plot(10, 6):
 ![png](/images/2016-03-09-multivariate-linear-regression/2016-03-09-multivariate-linear-regression_19_1.png) 
 
 
-**In [52]:**
+**In [18]:**
 
 {% highlight python %}
 descent.run(10)
@@ -299,7 +325,7 @@ with plots.zoom_plot(10, 6):
 ![png](/images/2016-03-09-multivariate-linear-regression/2016-03-09-multivariate-linear-regression_20_1.png) 
 
 
-**In [54]:**
+**In [19]:**
 
 {% highlight python %}
 descent.run(50)
@@ -317,4 +343,3 @@ with plots.zoom_plot(10, 6):
 
  
 ![png](/images/2016-03-09-multivariate-linear-regression/2016-03-09-multivariate-linear-regression_21_1.png) 
-

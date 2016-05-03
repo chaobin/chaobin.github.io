@@ -3,10 +3,12 @@
 {%- block header -%}
 ---
 layout: post_mathjax
+type: post
 title: "{{resources['metadata']['name']}}"
 tags:
     - python
     - notebook
+description: description
 ---
 {%- endblock header -%}
 
