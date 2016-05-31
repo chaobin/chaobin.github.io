@@ -4,3 +4,4 @@ Gemfile.lock
 _plugins
 build/
 temp/
+.DS_Store
