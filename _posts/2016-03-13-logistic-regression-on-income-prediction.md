@@ -180,8 +180,8 @@ The log-likelihood function becomes:
 {% endraw %}
 
 
-which is computationally a lot easier to work with because it avoids the
-underflow problem. For our purpose, we also take the negation of the log-
+which is computationally a lot easier to work with (such as because it avoids the
+underflow problem). For our purpose, we also take the negation of the log-
 likelihood (because we want to maximize the probability of parameters), and we
 use it as the cost function of our discriminant function:
 
@@ -807,9 +807,3 @@ print("accuracy:", model.accuracy(_X, _Y))
     cost: 0.350563860528
     accuracy: 0.990172593821
 
-
-**In [None]:**
-
-{% highlight python %}
-
-{% endhighlight %}
