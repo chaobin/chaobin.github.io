@@ -1,27 +1,26 @@
 ---
 layout: post_mathjax
 type: post
-title: Logistic regression on income prediction
+title: "2016-03-13-logistic-regression-on-income-prediction"
 tags:
-    - logistic regression
+    - classification
     - likelihood function
     - income prediction
-description: The non-linear sigmoid function allows us to interpret the mapped result as the posterior probability of a category given data x. This has important applications. Also, starting with a basic likelihood function, we derive a cost function sometimes called the cross entropy function used to quantize the quality of the model's prediction. Once again, this cost function can be used in the gradient descent to find an optimal set of parameters that best predicts the category given x. In this post, we develop a classifiction model that will be trained and used to predict the income category using an online archive of income data.
+description: The non-linear sigmoid function allows us to interpret the mapped result as the posterior probability of a category given data x. This has important applications. Also, starting with a basic likelihood function, we derive a cost function sometimes called the cross entropy function used to quantize the quality of the model's prediction. Once again, this cost function can be used in the gradient descent to find an optimal set of parameters that best predicts the category given x. In this post, we develop a classifiction model that will be trained and used to predict the income category using an online archive of income data. 
+
 --- 
-
-The non-linear sigmoid function allows us to interpret the mapped result as the posterior probability of a category given data x. This has important applications. Also, starting with a basic likelihood function, we derive a cost function sometimes called the cross entropy function used to quantize the quality of the model's prediction. Once again, this cost function can be used in the gradient descent to find an optimal set of parameters that best predicts the category given x. In this post, we develop a classifiction model that will be trained and used to predict the income category using an online archive of income data.
-
-### Discriminant function
-
+ 
 [Previously](/2016/03/09/multivariate-linear-regression/), the linear regression
 model is defined as the linear sum of the parameters and input:
+
 
 {% raw %}
 <div class="equation" data=" h_{(\Theta)}(x) = \Theta^Tx "></div>
 {% endraw %}
 
-Using the **least square** as the cost, the training data is used to fit the
-model so that its predictions differ from the data as little as possible.
+
+Using the **Mean Squared Error** as the cost, the training data is used to fit
+the model so that its predictions differ from the data as little as possible.
 
 In classification problems, our goal is to assign the data point to a class *C*
 for a given *x*. Given two classes, using the same model above, we can interpret
@@ -83,7 +82,7 @@ basic_plots.plot(0, 0.5, style='bo')
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_4_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_5_0.png) 
 
  
 ### Model representation and interpretation
@@ -130,11 +129,10 @@ y = 0.
 Having defined the discriminant function that will output the probability
 P(C|x), we are now motivated to find a cost function that can be used to
 quantitize the quality of the prediction. In the linear regression model, we
-used the Least Square Error to do that. Bear in mind that in classification
-problem, the data is labelled. For a two class problem, *x* in the training set
-is either labelled *1* denoting one class, or *0* denoting the other. Since the
-model outputs a probability P(C|x), it is natural to think of a **likelihood
-function**:
+used the MSE to do that. Bear in mind that in classification problem, the data
+is labelled. For a two class problem, *x* in the training set is either labelled
+*1* denoting one class, or *0* denoting the other. Since the model outputs a
+probability P(C|x), it is natural to think of a **likelihood function**:
 
 
 {% raw %}
@@ -147,8 +145,11 @@ equal to the probability of those observed outcomes given those parameter
 values. To use the training data X = {x_0, ..., x_n} to help define the
 parameters, the definition of the likelihood function therefore is:
 
-$$ L(\theta | x_0, ..., x_n) = P(x_0, ..., x_n | \theta) =
-\prod_{i=1}^nf(x_i|\theta)$$
+{% raw %}
+<div class="equation" data=" L(\theta | x_0, ..., x_n) = P(x_0, ..., x_n | \theta) =
+\prod_{i=1}^nf(x_i|\theta)
+"></div>
+{% endraw %}
 
 Or to say, the likelihood of the parameters is the **joint probability** of each
 *x* given parameters.
@@ -160,7 +161,7 @@ likelihood function by applying the **natural log** on it. And it becomes:
 
 
 {% raw %}
-<div class="equation" data=" log(L(\theta | x_0, ..., x_n)) = log(\prod_{i=1}^nf(x_i|\theta))"></div>
+<div class="equation" data=" log(L(\theta | x_0, ..., x_n)) = log(\prod_{i=1}^nf(x_i|\theta)) "></div>
 {% endraw %}
 
 
@@ -176,12 +177,12 @@ The log-likelihood function becomes:
 
 
 {% raw %}
-<div class="equation" data=" log(L(\theta | x_0, ..., x_n)) = \sum_{i=1}^nf(x_i|\theta) "></div>
+<div class="equation" data=" log(L(\theta | x_0, ..., x_n)) = \sum_{i=1}^nlog(f(x_i|\theta)) "></div>
 {% endraw %}
 
 
-which is computationally a lot easier to work with (such as because it avoids the
-underflow problem). For our purpose, we also take the negation of the log-
+which is computationally a lot easier to work with (such as because it avoids
+the underflow problem). For our purpose, we also take the negation of the log-
 likelihood (because we want to maximize the probability of parameters), and we
 use it as the cost function of our discriminant function:
 
@@ -207,8 +208,10 @@ Combining the two together we get:
 If the cost is then defined over a training data set, we take the *mean* of the
 summed error:
 
-$$ J(\Theta) = -\frac{1}{N} \sum_{n=1}^i{ y^{(i)} * log(h_\Theta(x^{(i)})) + (1
-- y^{(i)}) * log(1 - h_\Theta(x^{(i)})) }$$
+{% raw %}
+<div class="equation" data=" J(\Theta) = -\frac{1}{N} \sum_{n=1}^i{ y^{(i)} * log(h_\Theta(x^{(i)})) + (1
+- y^{(i)}) * log(1 - h_\Theta(x^{(i)}))}"></div>
+{% endraw %}
 
 The following code plots the sigmoid function side by side with the error
 measure: 
@@ -237,11 +240,11 @@ basic_plots.subplots(2, 2, sharex=False, sharey=False, order='v', plots=plots)
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_7_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_8_0.png) 
 
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_7_1.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_8_1.png) 
 
  
 Intuitively as the graph above shows, the error measure **decreases** as
@@ -498,7 +501,7 @@ with basic_plots.zoom_plot(8, 5):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_23_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_24_0.png) 
 
 
 **In [19]:**
@@ -516,7 +519,7 @@ with basic_plots.zoom_plot(8, 5):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_24_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_25_0.png) 
 
 
 **In [20]:**
@@ -585,7 +588,7 @@ with basic_plots.zoom_plot(8, 5):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_26_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_27_0.png) 
 
 
 **In [22]:**
@@ -598,7 +601,7 @@ with basic_plots.zoom_plot(8, 5):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_27_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_28_0.png) 
 
 
 **In [23]:**
@@ -611,7 +614,7 @@ with basic_plots.zoom_plot(8, 5):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_28_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_29_0.png) 
 
  
 It looks like people with less promising education experiences (from having **no
@@ -631,7 +634,7 @@ with basic_plots.zoom_plot(8, 5):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_30_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_31_0.png) 
 
  
 It looks **country** doesn't serve as a informative predictor because it takes
@@ -647,7 +650,7 @@ with basic_plots.zoom_plot(4, 4):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_32_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_33_0.png) 
 
 
 **In [26]:**
@@ -660,7 +663,7 @@ with basic_plots.zoom_plot(6, 4):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_33_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_34_0.png) 
 
 
 **In [27]:**
@@ -673,7 +676,7 @@ with basic_plots.zoom_plot(6, 4):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_34_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_35_0.png) 
 
 
 **In [28]:**
@@ -686,7 +689,7 @@ with basic_plots.zoom_plot(6, 4):
 {% endhighlight %}
 
  
-![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_35_0.png) 
+![png](/images/2016-03-13-logistic-regression-on-income-prediction/2016-03-13-logistic-regression-on-income-prediction_36_0.png) 
 
  
 Somehow, people in the **never married** group doesn't fall into the 50K group
@@ -807,3 +810,9 @@ print("accuracy:", model.accuracy(_X, _Y))
     cost: 0.350563860528
     accuracy: 0.990172593821
 
+
+**In [None]:**
+
+{% highlight python %}
+
+{% endhighlight %}
