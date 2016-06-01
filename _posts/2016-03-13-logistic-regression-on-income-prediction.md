@@ -1,7 +1,7 @@
 ---
 layout: post_mathjax
 type: post
-title: "2016-03-13-logistic-regression-on-income-prediction"
+title: "Logistic Regression on Income Prediction"
 tags:
     - classification
     - likelihood function
