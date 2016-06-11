@@ -302,6 +302,7 @@ of the prediction on each class:
 {% raw %}
 <div class="equation" data=" J(\Theta) = -\frac{1}{N} \sum_{n=1}^i\sum_{k=1}^K{{ y^{(i)}_k *
 log(h_\Theta(x^{(i)})_k) + (1 - y^{(i)}_k) * log(1 - h_\Theta(x^{(i)})_k) }}"></div>
+{% endraw %}
  
 ### Motivation - why neural network?
 
@@ -389,6 +390,7 @@ has the same number of units as that in the output layer:
 **In [277]:**
 
 {% highlight python %}
+
 with netplot.folder(NAME_POST): g = netplot.forward_net((10, 5, 5))
 g
 {% endhighlight %}
