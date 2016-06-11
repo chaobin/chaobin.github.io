@@ -230,8 +230,7 @@ basic.plot(0, 0, style='bo')
 ![png](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_11_1.png) 
 
  
-#### Normalized sigmoidal output - retain the ability to interpret the result as
-the multiclass membership probability distribution
+#### Normalized sigmoidal output - retain the ability to interpret the result as the multiclass membership probability distribution
 
 The above looks a natural generalization of the logistic regression from two
 class to multiclass. But an immediate problem arises in that representation is
@@ -295,8 +294,7 @@ basic.plot(0, 0.5, style='bo')
 #### Cost - summing the cost of the prediction on each class
 
 The cost of the generalized logistic regression on multiclass is nothing more
-complicated but summing all costs (in this case, the cross entropy cost is used)
-of the prediction on each class:
+complicated but summing all costs (in this case, the cross entropy cost is used) of the prediction on each class:
 
 
 {% raw %}
