@@ -28,7 +28,7 @@ body {
   font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #232323;
-  background-color: #FBFAF7;
+  /* background-color: #FBFAF7; */
   margin: 0;
   line-height: 1.8em;
   -webkit-font-smoothing: antialiased;
@@ -310,6 +310,12 @@ a.buttons:hover {
 
 .topnav li {
   list-style: none;
+}
+
+/* Latex */
+
+.equation {
+  font-size: 16px;
 }
 
 /* Section - for main page content */

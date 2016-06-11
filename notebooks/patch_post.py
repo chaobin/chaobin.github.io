@@ -67,9 +67,11 @@ def copy_images_over(fullname):
     filename_base = basename_no_ext(fullname)
     path_images = os.sep.join((BLOG_DIR, 'images', filename_base))
     if not os.path.exists(path_images): os.mkdir(path_images)
-    for img in glob.glob('%s*.png' % os.path.join(base_dir, filename_base)):
-        INFO("copying %s to %s" % (img, path_images))
-        shutil.copy(img, path_images)
+    f_types = ('svg', 'png')
+    for f_type in f_types:
+        for img in glob.glob('%s/*.%s' % (base_dir, f_type)):
+            INFO("copying %s to %s" % (img, path_images))
+            shutil.copy(img, path_images)
 
 def main():
     fullname_ipynb = sys.argv[1]

@@ -128,7 +128,7 @@ y = 0.
 
 Having defined the discriminant function that will output the probability
 P(C|x), we are now motivated to find a cost function that can be used to
-quantitize the quality of the prediction. In the linear regression model, we
+quantize the quality of the prediction. In the linear regression model, we
 used the MSE to do that. Bear in mind that in classification problem, the data
 is labelled. For a two class problem, *x* in the training set is either labelled
 *1* denoting one class, or *0* denoting the other. Since the model outputs a

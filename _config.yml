@@ -7,7 +7,7 @@ destination: ./_site
 plugins:     ./_plugins
 
 lsi:         false
-pygment: 	 true
+highlighter: rouge
 permalink:   pretty
 
 markdown: kramdown
