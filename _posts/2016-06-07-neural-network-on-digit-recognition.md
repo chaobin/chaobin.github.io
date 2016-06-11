@@ -302,8 +302,6 @@ of the prediction on each class:
 {% raw %}
 <div class="equation" data=" J(\Theta) = -\frac{1}{N} \sum_{n=1}^i\sum_{k=1}^K{{ y^{(i)}_k *
 log(h_\Theta(x^{(i)})_k) + (1 - y^{(i)}_k) * log(1 - h_\Theta(x^{(i)})_k) }}"></div>
-
-$$ $$ 
  
 ### Motivation - why neural network?
 
@@ -320,6 +318,7 @@ from sklearn import datasets
 from isaac.plots import basic
 reload(regressions)
 reload(basic)
+
 {% endhighlight %}
 
 
