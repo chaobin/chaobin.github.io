@@ -22,23 +22,19 @@ to grasp the back propagation algorithm. In the end, a classifier using
 everything in this post is built and tested on a task of recognizing hand
 written digits from images. 
  
-### Representation - A generalization of  logistic discriminant from two class
-to multiclass
+### Representation - A generalization of  logistic discriminant from two class to multiclass
 
 [The logistic discriminant function](/2016-03-13-logistic-regression-on-income-
 prediction/) we previously built:
-
 
 {% raw %}
 <div class="equation" data=" y(x) = g(\Theta^Tx)"></div>
 {% endraw %}
 
-
 applies a non-linear transformation on the linear sum of the parameters *θ* and
 the input *x*. And we then rely on the ability of the sigmoid function to allow
 us to interpret the mapped output as the posterior probability *P(C|x)*. For a
 classfication problem with two classes:
-
 
 {% raw %}
 <div class="equation" data=" P(y=1 | x) = h_{(\Theta)}(x)"></div>
@@ -50,22 +46,17 @@ and
 <div class="equation" data=" P(y=0 | x) = 1 - P(y=1 | x)"></div>
 {% endraw %}
 
-
 Then we derived from a likelihood function:
-
 
 {% raw %}
 <div class="equation" data=" L(\theta | x) = P(x | \theta) "></div>
 {% endraw %}
 
-
 a cost function:
-
 
 {% raw %}
 <div class="equation" data=" J(\Theta) = -Y * log(h_\Theta(x)) - (1 - Y) * log(1 - h_\Theta(x))"></div>
 {% endraw %}
-
 
 that allows us, through the optimization method such as gradient descent, to
 find the optimimal settings of parameters that maximizes the probability of
@@ -74,14 +65,11 @@ method to allow us to use a set of training data (with labelled data) to
 classify unseen data point.
 
 Having seen its ability to classify a two-class example in the income class
-prediction in that post, we are now motivated to generalize the model to work on
-multiple classes. A generalized form of the discriminant can look like this:
-
+prediction in that post, we are now motivated to generalize the model to work on multiple classes. A generalized form of the discriminant can look like this:
 
 {% raw %}
 <div class="equation" data=" y_k = g(w_k^Tx) "></div>
 {% endraw %}
-
 
 where *y_k* represents the posterior probability of observing class *k* given
 parameter which is a vector *w*. We than note for each class *k*, there is a
@@ -93,7 +81,6 @@ theatrical capacity, but the principles in the field mostly are formed from
 statistics. Although it is sometimes inspired by the biological neural systems
 such as human brain.):
  
-
 **In [265]:**
 
 {% highlight python %}
@@ -111,24 +98,15 @@ reload(netplot)
 with netplot.folder(NAME_POST): g = netplot.forward_net((10, 5))
 g
 {% endhighlight %}
-
-
-
  
 ![svg](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_3_0.svg) 
 
-
- 
 The neural network above has two layers, the input layer and the output layer.
 The dimension of the input layer is decided by the dimension of the data. In
 computer vision, it can be the size of the pixel vector flattened from an image
 pixel matrix. In NLP, it can be a [one-hot
 vector](https://en.wikipedia.org/wiki/One-hot) that represents a word in the
-vocabulary. The dimension of the output layer, in classification problem, can be
-the number of classes. In generative problem, such as the language model in NLP,
-it can be as the same dimension as the output (A language model takes an input a
-sentence, and outputs a sentence that represents the predicted next word for
-each word in the observation.).
+vocabulary. The dimension of the output layer, in classification problem, can be the number of classes. In generative problem, such as the language model in NLP, it can be as the same dimension as the output (A language model takes an input a sentence, and outputs a sentence that represents the predicted next word for each word in the observation.).
 
 A neural network in theory can take on an arbitrary number of layers, and we
 refer to the layers between the input and output layer the **hidden layer**.
@@ -140,13 +118,8 @@ Here is an example of the network that has three hidden layers:
 with netplot.folder(NAME_POST): g = netplot.forward_net((10, 9, 7, 5, 5))
 g
 {% endhighlight %}
-
-
-
  
-![svg](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_5_0.svg) 
-
-
+![svg](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_5_0.svg)
  
 Theoretically, more layers can encode more information. Each layer can pick up
 what's encoded by the layer before it and learn the pattern from it. So, the
@@ -168,11 +141,9 @@ investigations on these in other dedicated future post.
 In the plotted network above that has two hidden layers, the linear
 transformation on each layer takes place from left to right:
 
-
 {% raw %}
 <div class="equation" data=" y(x) = g(w_{l_5}^Tg(w_{l_4}^Tg(w_{l_3}^Tg(w_{l_2}^Tg(w_{l_1}^Tx))))) "></div>
 {% endraw %}
-
 
 This is called forward propagation. When implemented in a vectorization library
 such as **numpy**, the computing is often to calculate a **dot product**
@@ -185,12 +156,10 @@ activation functions are:
 
 ##### tanh(x)
 
-
 {% raw %}
 <div class="equation" data=" g(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} "></div>
 {% endraw %}
  
-
 **In [156]:**
 
 {% highlight python %}
@@ -208,10 +177,8 @@ basic.plot(X, Y, style='k-', label="Tanh", title="Tanh",
 basic.plot(0, 0, style='bo')
 {% endhighlight %}
 
- 
 ![png](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_9_0.png) 
 
- 
 ##### rectifier: g(z) = max(0, z) 
 
 **In [162]:**
@@ -226,9 +193,7 @@ basic.plot(0, 0, style='bo')
     (2000, 2)
 
 
- 
 ![png](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_11_1.png) 
-
  
 #### Normalized sigmoidal output - retain the ability to interpret the result as the multiclass membership probability distribution
 
@@ -237,39 +202,27 @@ class to multiclass. But an immediate problem arises in that representation is
 that the ability to interpret the result transformed by the sigmoid function as
 the probability distribution no longer holds true, because for classes C > 2:
 
-
 {% raw %}
 <div class="equation" data=" \sum_{k=1}^n\sigma(w_k^Tx) "></div>
 {% endraw %}
 
-
 where:
-
 
 {% raw %}
 <div class="equation" data=" \sigma = g(x) = \frac{1}{1 + e^{-x}} "></div>
 {% endraw %}
-
 
 no longer lies in the range *(0, 1)*. To retain the ability to interpret the
 result as the class membership probability distribution, we need to normalize
 the output function so that for mutually exclusive class membership, the sum of
 the output will add up to 1. The normalization is defined as:
 
-
 {% raw %}
 <div class="equation" data=" g(x)_j = \frac{e^{x_j}}{\sum_{k=1}^ne^{x_k}}"></div>
 {% endraw %}
 
-
 This normalization is often called **softmax**, in the sense that it is a
-smoothed/soft version of the maximum sigmoidal output. It is also worth pointing
-out that in practice, the represetation will continue to function regardless of
-the output function being normalized or not. There is a difference beyond being
-more mathematically plausible however, that when using the softmax, the cross
-entropy cost function will feedback a more accurate cost thus alleviate the
-**learning slowdown** problem when the neural network saturates. The saturation
-of a neural network is best depicted by its sigmoidal output: 
+smoothed/soft version of the maximum sigmoidal output. It is also worth pointing out that in practice, the represetation will continue to function regardless of the output function being normalized or not. There is a difference beyond being more mathematically plausible however, that when using the softmax, the cross entropy cost function will feedback a more accurate cost thus alleviate the **learning slowdown** problem when the neural network saturates. The saturation of a neural network is best depicted by its sigmoidal output: 
 
 **In [164]:**
 
@@ -290,12 +243,10 @@ basic.plot(0, 0.5, style='bo')
  
 ![png](/images/2016-04-15-neural-network-on-digit-recognition/2016-04-15-neural-network-on-digit-recognition_13_0.png) 
 
- 
 #### Cost - summing the cost of the prediction on each class
 
 The cost of the generalized logistic regression on multiclass is nothing more
 complicated but summing all costs (in this case, the cross entropy cost is used) of the prediction on each class:
-
 
 {% raw %}
 <div class="equation" data=" J(\Theta) = -\frac{1}{N} \sum_{n=1}^i\sum_{k=1}^K{{ y^{(i)}_k *
