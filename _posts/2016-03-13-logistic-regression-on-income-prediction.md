@@ -6,7 +6,7 @@ tags:
     - classification
     - likelihood function
     - income prediction
-description: The non-linear sigmoid function allows us to interpret the mapped result as the posterior probability of a category given data x. This has important applications. Also, starting with a basic likelihood function, we derive a cost function sometimes called the cross entropy function used to quantize the quality of the model's prediction. Once again, this cost function can be used in the gradient descent to find an optimal set of parameters that best predicts the category given x. In this post, we develop a classifiction model that will be trained and used to predict the income category using an online archive of income data. 
+description: The non-linear sigmoid function allows us to interpret the mapped result as the posterior probability of a category given data x. This has important applications. Also, starting with a basic likelihood function, we derive a cost function sometimes called the cross entropy function used to quantify the quality of the model's prediction. Once again, this cost function can be used in the gradient descent to find an optimal set of parameters that best predicts the category given x. In this post, we develop a classifiction model that will be trained and used to predict the income category using an online archive of income data. 
 
 --- 
  
