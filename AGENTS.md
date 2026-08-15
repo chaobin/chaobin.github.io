@@ -22,8 +22,8 @@ jekyll serve` (see repo memory / `_dev` docs for the full recipe).
 - The public `creature/NNN/` folders must contain **only the masked,
   build-time artifacts** (e.g. `creature/001/app.js` + `index.html` +
   `styles.css`). Do not add source `.js`, `values.csv`, or dev docs there.
-- Rebuild the masked bundle with `cd _dev && npm run build`. Never commit an
-  un-obfuscated or debug build as `app.js`.
+- Rebuild the masked bundle with `cd _dev && npm run build -- NNN` (e.g. `001`).
+  Never commit an un-obfuscated or debug build as `app.js`.
 - Before committing anything under `creature/`, run the leak check:
   ```bash
   git status --short          # nothing under _dev/
