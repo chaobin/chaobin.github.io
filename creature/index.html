@@ -4,9 +4,16 @@ type: page
 title: Creatures
 ---
 
-<p>Interactive experiments — the <em>creatures</em>. Each runs in its own page.</p>
+<style>
+  body { background: #111; color: #f2f2f2; }
+  h1, h2, h3, h4, h5, h6 { color: #f2f2f2; border-bottom-color: #333; }
+  a { color: #aac9ff; }
+  a:hover { color: #fff; }
+  .topnav li a { color: #fff; }
+  h1.header, header p.header { color: #f2f2f2; }
+  footer, footer p { color: #cdd3da; }
+</style>
 
 {% for c in site.data.creatures %}
 <h2><a href="/creature/{{ c.slug }}/">{{ c.title }}</a></h2>
-<p>{{ c.description }}</p>
 {% endfor %}
