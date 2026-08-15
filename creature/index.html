@@ -1,0 +1,12 @@
+---
+layout: post
+type: page
+title: Creatures
+---
+
+<p>Interactive experiments — the <em>creatures</em>. Each runs in its own page.</p>
+
+{% for c in site.data.creatures %}
+<h2><a href="/creature/{{ c.slug }}/">{{ c.title }}</a></h2>
+<p>{{ c.description }}</p>
+{% endfor %}
