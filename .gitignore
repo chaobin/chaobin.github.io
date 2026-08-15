@@ -5,3 +5,6 @@ _plugins
 build/
 temp/
 .DS_Store
+.bundle
+vendor/
+_dev/
