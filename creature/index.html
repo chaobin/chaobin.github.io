@@ -12,8 +12,9 @@ title: Creatures
   .topnav li a { color: #fff; }
   h1.header, header p.header { color: #f2f2f2; }
   footer, footer p { color: #cdd3da; }
+  .small { color: #9aa0a6; font-size: 9px; }
 </style>
 
 {% for c in site.data.creatures %}
-<h2><a href="/creature/{{ c.slug }}/">{{ c.title }}</a></h2>
+<h2><a href="/creature/{{ c.slug }}/">{{ c.title }}</a> <span class="small">{{ c.date | date: '%d/%m/%Y' }}</span></h2>
 {% endfor %}

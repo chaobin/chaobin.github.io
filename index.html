@@ -5,10 +5,36 @@ title: Faulty Human Memory
 keywords: Chaobin Tang, Programming, Python, Linux, Computer System, Machine Learning
 description: Some posts as a reminder to myself.
 ---
-{% for post in site.posts %}
-<h2><a href="{{ post.url }}">{{ post.title | capitalize }}</a></h2>
-<p>
-  {{ post.description }}
-  <span class="small">{{ post.date | date:'%d/%m/%Y'}}</span>
-</p>
+<style>
+  body { background: #111; color: #f2f2f2; }
+  h1, h2, h3, h4, h5, h6 { color: #f2f2f2; border-bottom-color: #333; }
+  a { color: #aac9ff; }
+  a:hover { color: #fff; }
+  .topnav li a { color: #fff; }
+  h1.header, header p.header { color: #f2f2f2; }
+  footer, footer p { color: #cdd3da; }
+  .small { color: #9aa0a6; font-size: 9px; }
+  .archive-heading {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: normal;
+    color: #f2f2f2;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+</style>
+
+<h2>Creatures</h2>
+{% for c in site.data.creatures reversed %}
+<h3><a href="/creature/{{ c.slug }}/">{{ c.title }}</a> <span class="small">{{ c.date | date:'%d/%m/%Y' }}</span></h3>
 {% endfor %}
+
+<details>
+  <summary class="archive-heading">Archive ({{ site.posts | size }})</summary>
+  {% for post in site.posts %}
+  <h3><a href="{{ post.url }}">{{ post.title | capitalize }}</a> <span class="small">{{ post.date | date:'%d/%m/%Y' }}</span></h3>
+  {% endfor %}
+</details>
