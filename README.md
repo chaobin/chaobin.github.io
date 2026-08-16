@@ -1,6 +1,6 @@
 ### chaobin.github.io
 
-A blog for my own study
+computing/internet/biomimicry
 
 ### License
 
