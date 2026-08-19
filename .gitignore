@@ -9,3 +9,4 @@ temp/
 vendor/
 _dev/
 _dev
+.vscode/
