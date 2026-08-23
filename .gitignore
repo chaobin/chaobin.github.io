@@ -8,3 +8,5 @@ temp/
 .bundle
 vendor/
 _dev/
+_dev
+.vscode/

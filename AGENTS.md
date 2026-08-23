@@ -56,3 +56,8 @@ jekyll serve` (see repo memory / `_dev` docs for the full recipe).
 
 ## Publishing
 Push to `master` — the Actions workflow builds and deploys automatically.
+
+## Agent bus (cross-window messaging)
+- A shared cross-window message bus is available as the MCP server **`agent-bus`** (docs: `/Users/chaobintang/Projects/tools/agent-bus/`).
+- At the START of every turn, call `agent_bus_poll` on channel `skyline` with `since` = the last id you saw, and act on any pending handoffs/questions.
+- After meaningful work another window needs, `agent_bus_send` a short summary with `from: <this window's id>` and `to: <recipient window id>` (or `all`). This window's id = the workspace folder name unless overridden by `agentBus.windowId`.
