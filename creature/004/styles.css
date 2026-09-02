@@ -3,7 +3,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body { width: 100%; height: 100%; overflow: hidden; }
+html, body { width: 100%; height: 100%; overflow: hidden; overscroll-behavior: none; }
 
 body {
   background: #0b0b0b;
@@ -16,8 +16,17 @@ canvas#float {
   inset: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;              /* dynamic viewport height — stays stable as the phone URL bar settles */
   display: block;
   cursor: crosshair;
+  /* MOBILE: hand the pointer stream to the app. Without touch-action:none the
+     browser claims the gesture for scroll/zoom and cancels pointermove, so
+     touch drags can't poke/wave/orbit the water. */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* control hint — fixed bottom-center */
@@ -36,6 +45,34 @@ canvas#float {
 }
 
 #hint b { color: rgba(255, 255, 255, 0.7); font-weight: 600; }
+
+/* blow (mic) control — fixed top-right pill. Tapping it arms the microphone
+   (a user gesture → the browser permission prompt); blowing then makes waves.
+   `.on` = armed. Sits above the canvas, so its taps don't poke/orbit. */
+#blow {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.55);
+  font: 600 12px/1 system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+#blow:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+#blow.on {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
 
 /* credit — fixed bottom-right, muted */
 #credit {
