@@ -29,10 +29,12 @@ canvas#float {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* control hint — fixed bottom-center */
+/* control hint — fixed bottom-center. On desktop it sits HIGH enough to clear
+   the bottom-right #credit line (credit is bottom:16px); the phone media query
+   below re-pins it low on narrow viewports. */
 #hint {
   position: fixed;
-  bottom: 18px;
+  bottom: 46px;
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255, 255, 255, 0.45);
@@ -45,6 +47,14 @@ canvas#float {
 }
 
 #hint b { color: rgba(255, 255, 255, 0.7); font-weight: 600; }
+
+/* two hint variants: .d = one-line desktop text; .p = phone instructions, one
+   per line. .p is hidden by default; it shows only on coarse-pointer UIs
+   (body.phone — set by creature.js) or narrow viewports (media query below). */
+#hint .p { display: none; }
+#hint .p span { display: block; line-height: 1.5; }
+body.phone #hint .d { display: none; }
+body.phone #hint .p { display: block; }
 
 /* blow (mic) control — fixed top-right pill. Tapping it arms the microphone
    (a user gesture → the browser permission prompt); blowing then makes waves.
@@ -90,13 +100,15 @@ canvas#float {
 @media (max-width: 700px) {
   #hint {
     font-size: 11px;
-    line-height: 1.35;
+    line-height: 1.5;
     letter-spacing: 0.02em;
     white-space: normal;
     width: min(88vw, 460px);
-    bottom: 12px;
+    bottom: 30px;   /* stacked 4-line hint sits above the bottom-right #credit */
     padding: 0 8px;
   }
+  #hint .d { display: none; }   /* narrow → always show the stacked phone lines */
+  #hint .p { display: block; }
   #blow {
     top: 10px;
     right: 10px;

@@ -9,7 +9,8 @@
 <body>
   <canvas id="float"></canvas>
   <button id="blow" title="Blow into the mic to make waves">blow</button>
-  <div id="hint">drag the cubes to poke &middot; drag the water to look around &middot; tap <b>blow</b> then blow at the mic for waves</div>
+  <!-- two hint variants: .d one-line desktop · .p stacked phone lines (shown on coarse-pointer / narrow viewports). Each control is its own line on phone. -->
+  <div id="hint"><span class="d">drag the cubes to poke &middot; drag the water to look around &middot; tap <b>blow</b> then blow at the mic for waves</span><span class="p"><span>poke &middot; touch the water</span><span>steer the worm &middot; touch outside the pool</span><span>drop a ball &middot; two fingers</span><span>waves &middot; tap <b>blow</b>, then blow</span></span></div>
   <div id="credit">by CHAOBIN TANG</div>
 
   <!-- masked single-file build (values baked in) — no readable sources here -->
