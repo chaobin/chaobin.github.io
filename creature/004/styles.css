@@ -84,3 +84,24 @@ canvas#float {
   letter-spacing: 0.1em;
   pointer-events: none;
 }
+
+/* PHONE: the control hint is long — shrink it and let it wrap so it never
+   overflows off-screen on a narrow phone viewport. */
+@media (max-width: 700px) {
+  #hint {
+    font-size: 11px;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    white-space: normal;
+    width: min(88vw, 460px);
+    bottom: 12px;
+    padding: 0 8px;
+  }
+  #blow {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  #credit { right: 12px; bottom: 10px; font-size: 10px; }
+}
